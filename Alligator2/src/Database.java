@@ -6,7 +6,6 @@ import java.sql.*;
 public class Database {
     private String name;
     public Database(String fileName) {
-        //testing testing 2 22 
         name = "jdbc:sqlite:" + fileName;
 
 
@@ -44,13 +43,10 @@ public class Database {
                 + "	id integer PRIMARY KEY,\n"
                 + "	lev text NOT NULL,\n"
                 + "	name text NOT NULL,\n"
-                + "	nr text NOT NULL,\n"
                 + " pris text NOT NULL, \n"
                 + "	proj text NOT NULL,\n"
-                + " prio text NOT NULL, \n"
                 + " chemText text, \n"
                 + " date text NOT NULL, \n"
-                + " user text NOT NULL \n"
                 + ");";
 
 
@@ -59,10 +55,7 @@ public class Database {
                 + "	lev text NOT NULL,\n"
                 + "	name text NOT NULL,\n"
                 + "	nr text NOT NULL,\n"
-                + " pris text NOT NULL, \n"
-                + "	proj text NOT NULL,\n"
                 + " prio text NOT NULL, \n"
-                + " chemText text, \n"
                 + " date text NOT NULL, \n"
                 + " user text NOT NULL \n"
                 + ");";
@@ -72,11 +65,7 @@ public class Database {
                 + "	lev text NOT NULL,\n"
                 + "	name text NOT NULL,\n"
                 + "	nr text NOT NULL,\n"
-                + " pris text NOT NULL, \n"
-                + "	proj text NOT NULL,\n"
-                + " prio text NOT NULL, \n"
-                + " chemText text, \n"
-                + " date text NOT NULL, \n"
+                + " ordered text NOT NULL, \n"
                 + " user text NOT NULL \n"
                 + ");";
 
@@ -85,8 +74,6 @@ public class Database {
                 + "	lev text NOT NULL,\n"
                 + "	name text NOT NULL,\n"
                 + "	nr text NOT NULL,\n"
-                + " pris text NOT NULL, \n"
-                + "	proj text NOT NULL,\n"
                 + " prio text NOT NULL, \n"
                 + " chemText text, \n"
                 + " date text NOT NULL, \n"
@@ -244,8 +231,6 @@ public class Database {
 
         return nr;
     }
-
-
     public boolean createArticle(String lev, String name, String nr){
         String sql = "INSERT INTO articles(lev,name,nr) VALUES(?,?,?)";
 
@@ -269,7 +254,6 @@ public class Database {
         }
         return true;
     }
-
     /* En beställning är blir godkänd - och därför borttagen ur Articles och inlagd i Orders */
     public void orderAccepted(String table, String lev, String name, String nr, String pris, String proj,
                               String prio, String chem, String user, String date, String best, String rec, String kyl){
